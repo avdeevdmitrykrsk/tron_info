@@ -1,0 +1,5 @@
+NET_USED_KEY = 'NetUsed'
+ENERGY_LIMIT_KEY = 'EnergyLimit'
+FREE_NET_LIMIT_KEY = 'freeNetLimit'
+NET_LIMIT_KEY = 'NetLimit'
+FREE_NET_USED_KEY = 'freeNetUsed'
