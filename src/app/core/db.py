@@ -1,4 +1,4 @@
-from sqlalchemy import Column, Integer
+from sqlalchemy import Column, DateTime, Integer, func
 from sqlalchemy.ext.asyncio import AsyncSession, create_async_engine
 from sqlalchemy.orm import (
     declarative_base,
@@ -6,7 +6,7 @@ from sqlalchemy.orm import (
     sessionmaker,
 )
 
-from src.app.core.config import settings
+from app.core.config import settings
 
 
 class PreBase:
@@ -18,6 +18,15 @@ class PreBase:
         return cls.__name__.lower()
 
     id = Column(Integer, primary_key=True, index=True)
+    created_at = Column(
+        DateTime, server_default=func.now(), comment='Дата создания'
+    )
+    updated_at = Column(
+        DateTime,
+        server_default=func.now(),
+        onupdate=func.now(),
+        comment='Дата обновления',
+    )
 
 
 Base = declarative_base(cls=PreBase)

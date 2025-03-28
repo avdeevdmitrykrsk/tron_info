@@ -11,7 +11,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 
 
 @pytest.mark.asyncio
-async def test_create_wallet(test_wallet_id: str, test_account_info: dict):
+async def test_create_wallet(test_account_info: dict):
     """Тест создания записи о кошельке."""
     mock_session = AsyncMock(spec=AsyncSession)
     service = CRUDWallet()
@@ -25,7 +25,9 @@ async def test_create_wallet(test_wallet_id: str, test_account_info: dict):
     mock_session.refresh.assert_awaited_once()
 
     assert isinstance(result, WalletInfo)
-    assert result.wallet_id == test_wallet_id
+    assert result.wallet_id == test_account_info['wallet_id']
+    assert result.trx_balance == test_account_info['trx_balance']
+    assert result.energy_limit == test_account_info['energy_limit']
 
 
 def test_get_wallet_info_enpoint(client):
@@ -33,5 +35,10 @@ def test_get_wallet_info_enpoint(client):
     assert response.status_code == HTTPStatus.OK
 
     response_data = response.json()
-    assert 'items' in response_data
+    assert set(response_data.keys()) == {
+        'items',
+        'total',
+        'page',
+        'size',
+    }
     assert isinstance(response_data['items'], list)

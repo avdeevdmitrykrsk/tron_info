@@ -4,11 +4,11 @@ from fastapi import APIRouter, Depends, status
 from fastapi_pagination import Params, Page
 from sqlalchemy.orm import Session
 
-from src.app.services import WalletService, get_wallet_service
-from src.app.core.db import get_async_session
-from src.app.crud.wallet_info import wallet_crud
-from src.app.models.wallet_info import WalletInfo
-from src.app.schemas.wallet_info import WalletInfoSchema, WalletInfoDB
+from app.services import WalletService, get_wallet_service
+from app.core.db import get_async_session
+from app.crud.wallet_info import wallet_crud
+from app.models.wallet_info import WalletInfo
+from app.schemas.wallet_info import WalletInfoSchema, WalletInfoDB
 
 router = APIRouter()
 logger = getLogger(__name__)

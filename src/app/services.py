@@ -5,9 +5,9 @@ from tronpy import AsyncTron
 from tronpy.exceptions import AddressNotFound, BadAddress
 from tronpy.providers import AsyncHTTPProvider
 
-from src.app.exceptions import InvalidAddress, TronNetworkError, WalletNotFound
-from src.app.core.config import settings
-from src.app.crud.constants import (
+from app.exceptions import InvalidAddress, TronNetworkError, WalletNotFound
+from app.core.config import settings
+from app.crud.constants import (
     ENERGY_LIMIT_KEY,
     FREE_NET_LIMIT_KEY,
     FREE_NET_USED_KEY,

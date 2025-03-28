@@ -1,20 +1,11 @@
 import pytest
 from fastapi.testclient import TestClient
 from sqlalchemy import create_engine
-from sqlalchemy.ext.asyncio import AsyncSession
-from sqlalchemy.orm import sessionmaker
 
 from src.main import app
 from src.app.core.base import Base
 
 engine = create_engine('sqlite:///./test.db')
-
-
-@pytest.fixture
-async def db_session(engine):
-    async with sessionmaker(engine, class_=AsyncSession)() as session:
-        yield session
-        await session.rollback()
 
 
 @pytest.fixture(scope='module')
