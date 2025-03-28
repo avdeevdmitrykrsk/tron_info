@@ -2,7 +2,7 @@ import logging
 
 from fastapi_pagination import Params, Page
 from fastapi_pagination.ext.async_sqlalchemy import paginate
-from sqlalchemy import select
+from sqlalchemy import desc, select
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.models.wallet_info import WalletInfo
@@ -28,8 +28,9 @@ class CRUDWallet:
 
     async def get_list(self, session: AsyncSession, params: Params) -> Page:
         """Получает все записи из БД с пагинацией."""
+        query = select(WalletInfo).order_by(desc(WalletInfo.created_at))
         logger.info('Получение записей из БД.')
-        instances = await paginate(session, select(WalletInfo), params)
+        instances = await paginate(session, query, params)
 
         return instances
 
