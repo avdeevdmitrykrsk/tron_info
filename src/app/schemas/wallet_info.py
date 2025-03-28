@@ -1,6 +1,6 @@
 import re
-from decimal import Decimal
 from datetime import datetime
+from decimal import Decimal
 
 from pydantic import BaseModel, validator
 
