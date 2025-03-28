@@ -45,10 +45,13 @@ class Settings(BaseSettings):
     @property
     def sync_database_url(self) -> str:
         """Строка синхронного подключения к postgres DB (alembic)."""
+        if not self.DATABASE_URL:
+            return self.async_database_url.replace(
+                'postgresql+asyncpg://', 'postgresql+psycopg2://'
+            )
         return self.async_database_url.replace(
-            'postgresql+asyncpg://', 'postgresql+psycopg2://'
+            'sqlite+aiosqlite:///', 'sqlite:///'
         )
-        # return 'sqlite:///wallet_info.db'
 
 
 def setup_logging():
