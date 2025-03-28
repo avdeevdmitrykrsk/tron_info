@@ -28,8 +28,8 @@ class CRUDWallet:
 
     async def get_list(self, session: AsyncSession, params: Params) -> Page:
         """Получает все записи из БД с пагинацией."""
-        query = select(WalletInfo).order_by(desc(WalletInfo.created_at))
         logger.info('Получение записей из БД.')
+        query = select(WalletInfo).order_by(desc(WalletInfo.created_at))
         instances = await paginate(session, query, params)
 
         return instances
