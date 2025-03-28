@@ -1,5 +1,6 @@
 import re
 from decimal import Decimal
+from datetime import datetime
 
 from pydantic import BaseModel, validator
 
@@ -32,6 +33,8 @@ class WalletInfoDB(BaseModel):
     net_limit: int
     free_net_used: int
     net_used: int
+    created_at: datetime
+    updated_at: datetime
 
     class Config:
         orm_mode = True

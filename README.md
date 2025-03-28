@@ -54,7 +54,9 @@ docker-compose up
             "free_net_limit": 5,
             "net_limit": 5,
             "free_net_used": 5,
-            "net_used": 5
+            "net_used": 5,
+            "created_at": "1050-01-01T08:42:03",
+            "updated_at": "1050-01-01T08:42:03"
         }
     ],
     "total": 1,
