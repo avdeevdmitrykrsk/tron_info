@@ -15,7 +15,7 @@
 [avdeevdmitrykrsk](https://github.com/avdeevdmitrykrsk)
 </details>
 
-### Сервис готов к запуску локально, для этого установите зависимости из requirements.txt, заполните `.env` файл по примеру из `.env.example`.
+### Сервис готов к запуску локально, для этого создайте виртуальное окружение, установите зависимости из requirements.txt, заполните `.env` файл по примеру из `.env.example`.
 ### Далее перейдите в корневую папку и выполните команду:
 ```sh
 # Миграции alembic применятся автоматически.
@@ -36,7 +36,9 @@ docker-compose up
     "free_net_limit": 5,
     "net_limit": 5,
     "free_net_used": 5,
-    "net_used": 5
+    "net_used": 5,
+    "created_at": "1050-01-01T08:42:03",
+    "updated_at": "1050-01-01T08:42:03"
 }
 ```
 
